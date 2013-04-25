@@ -18,7 +18,7 @@ public class SpectralClustering extends Clustering {
   }
 
   public static void main(String[] args) throws IOException {
-    String id = "698";
+    String id = "1912";
     long a = System.currentTimeMillis();
     SpectralClustering sc = new SpectralClustering("/Users/huanchen/Desktop/lab4/facebook/" + id
             + ".edges", 3);

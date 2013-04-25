@@ -17,7 +17,7 @@ public class PowerIterationClustering extends Clustering {
     this.ids = graph.getIds();
   }
 
-  public double[][] pic(Matrix m) {
+  private double[][] pic(Matrix m) {
     /* initialize v */
     System.out.println(m.getRowDimension());
     Matrix preV = new Matrix(m.getRowDimension(), 1);

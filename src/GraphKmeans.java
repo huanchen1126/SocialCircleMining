@@ -23,7 +23,7 @@ public class GraphKmeans extends Clustering {
   }
 
   public static void main(String[] args) throws IOException {
-    String id = "698";
+    String id = "1912";
     long a = System.currentTimeMillis();
     GraphKmeans gk = new GraphKmeans("/Users/huanchen/Desktop/lab4/facebook/" + id + ".edges");
     Evaluation eva = new Evaluation("/Users/huanchen/Desktop/lab4/facebook/" + id + ".circles");
