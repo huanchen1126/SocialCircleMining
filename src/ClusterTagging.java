@@ -45,7 +45,7 @@ public class ClusterTagging {
     br.close();
   }
 
-  public void tagCluster(List<List<String>> clusters) {
+  public List<Map<String, Integer>> tagCluster(List<List<String>> clusters) {
     /* cluster features */
     List<int[]> clusterFeatures = new ArrayList<int[]>();
     for (List<String> cluster : clusters) {
@@ -58,12 +58,18 @@ public class ClusterTagging {
       }
       clusterFeatures.add(feature);
     }
+    /* for return */
+    List<Map<String, Integer>> result = new ArrayList<Map<String, Integer>>();
     /* print result */
     for (int[] feature : clusterFeatures) {
+      Map<String, Integer> r = new HashMap<String, Integer>();
       for (int i = 0; i < numFeatures; i++) {
-        System.out.print("feature:" + dict.get(i) + ",count:" + feature[i]+"\t");
+        r.put(dict.get(i), feature[i]);
+        // System.out.print("feature:" + + ",count:" + feature[i]+"\t");
       }
-      System.out.print("\n");
+      result.add(r);
+      // System.out.print("\n");
     }
+    return result;
   }
 }
