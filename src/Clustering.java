@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Jama.Matrix;
 
@@ -9,10 +11,9 @@ public abstract class Clustering {
 
   protected String[] ids;
 
-  private static int MAX_ITERATION = 50;
+  protected Map<String, Integer> ind;
 
-  public Clustering() {
-  }
+  private static int MAX_ITERATION = 50;
 
   protected void normalize(Matrix m) {
     int rowDim = m.getRowDimension();
@@ -132,12 +133,12 @@ public abstract class Clustering {
     return result;
   }
 
-  public List<List<String>> kmeans(List<Integer> centroidid) {
+  public List<List<String>> kmeans(List<String> centroidid) {
     int k = centroidid.size();
     /* get the initial centroids */
     double[][] centroids = new double[k][matrix[0].length];
     for (int i = 0; i < k; i++) {
-      double[] tmp = matrix[centroidid.get(i)];
+      double[] tmp = matrix[ind.get(centroidid.get(i))];
       for (int j = 0; j < tmp.length; j++) {
         centroids[i][j] = tmp[j];
       }

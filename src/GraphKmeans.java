@@ -13,6 +13,7 @@ public class GraphKmeans extends Clustering {
     m = mulMatrixK(6, m);
     this.matrix = m.getArray();
     ids = graph.getIds();
+    ind = graph.getInd();
   }
 
   private Matrix mulMatrixK(int k, Matrix matrix) {

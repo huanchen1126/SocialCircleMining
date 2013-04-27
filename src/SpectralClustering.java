@@ -15,6 +15,7 @@ public class SpectralClustering extends Clustering {
     Matrix v = ed.getV();
     matrix = v.getMatrix(0, v.getRowDimension() - 1, 0, k).getArray();
     ids = graph.getIds();
+    ind = graph.getInd();
   }
 
   public static void main(String[] args) throws IOException {

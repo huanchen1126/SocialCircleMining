@@ -13,6 +13,8 @@ public class Graph {
 
   private String[] ids;
 
+  private Map<String, Integer> ind;
+
   public Graph(String path) throws IOException {
     readEdgeToMatrix(path);
   }
@@ -21,7 +23,7 @@ public class Graph {
     /* matrix using starting vertices (row index) as key */
     Map<String, List<String>> edges = new HashMap<String, List<String>>();
     /* the String id to index mapping */
-    Map<String, Integer> ind = new HashMap<String, Integer>();
+    ind = new HashMap<String, Integer>();
     BufferedReader br = new BufferedReader(new FileReader(path));
     String line = null;
     while ((line = br.readLine()) != null) {
@@ -70,5 +72,9 @@ public class Graph {
 
   public String[] getIds() {
     return this.ids;
+  }
+
+  public Map<String, Integer> getInd() {
+    return this.ind;
   }
 }
