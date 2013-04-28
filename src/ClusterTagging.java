@@ -64,7 +64,8 @@ public class ClusterTagging {
     for (int[] feature : clusterFeatures) {
       Map<String, Integer> r = new HashMap<String, Integer>();
       for (int i = 0; i < numFeatures; i++) {
-        r.put(dict.get(i), feature[i]);
+        if(feature[i] != 0)
+          r.put(dict.get(i), feature[i]);
         // System.out.print("feature:" + + ",count:" + feature[i]+"\t");
       }
       result.add(r);
