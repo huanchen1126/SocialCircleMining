@@ -3,8 +3,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import Jama.Matrix;
 
@@ -21,7 +23,7 @@ public class Graph {
 
   private void readEdgeToMatrix(String path) throws IOException {
     /* matrix using starting vertices (row index) as key */
-    Map<String, List<String>> edges = new HashMap<String, List<String>>();
+    Map<String, Set<String>> edges = new HashMap<String, Set<String>>();
     /* the String id to index mapping */
     ind = new HashMap<String, Integer>();
     BufferedReader br = new BufferedReader(new FileReader(path));
@@ -37,11 +39,19 @@ public class Graph {
         ind.put(in, ind.size());
       /* add to edges */
       if (!edges.containsKey(out)) {
-        ArrayList<String> list = new ArrayList<String>();
+        Set<String> list = new HashSet<String>();
         list.add(in);
         edges.put(out, list);
       } else {
         edges.get(out).add(in);
+      }
+      /* also add in */
+      if (!edges.containsKey(in)) {
+        Set<String> list = new HashSet<String>();
+        list.add(out);
+        edges.put(in, list);
+      } else {
+        edges.get(in).add(out);
       }
     }
     br.close();
@@ -51,7 +61,7 @@ public class Graph {
     for (String out : ind.keySet()) {
       int indout = ind.get(out);
       if (edges.containsKey(out)) {
-        List<String> list = edges.get(out);
+        Set<String> list = edges.get(out);
         for (String in : list) {
           int indin = ind.get(in);
           matrix.set(indout, indin, 1);

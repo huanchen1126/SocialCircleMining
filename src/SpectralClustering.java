@@ -19,13 +19,13 @@ public class SpectralClustering extends Clustering {
   }
 
   public static void main(String[] args) throws IOException {
-    String id = "1912";
+    String id = "43194901";
     long a = System.currentTimeMillis();
-    SpectralClustering sc = new SpectralClustering("/Users/huanchen/Desktop/lab4/facebook/" + id
+    SpectralClustering sc = new SpectralClustering("/Users/huanchen/Desktop/lab4/twitter/" + id
             + ".edges", 3);
-    Evaluation eva = new Evaluation("/Users/huanchen/Desktop/lab4/facebook/" + id + ".circles");
-    ClusterTagging cTag = new ClusterTagging("/Users/huanchen/Desktop/lab4/facebook/" + id
-            + ".featnames", "/Users/huanchen/Desktop/lab4/facebook/" + id + ".feat");
+    Evaluation eva = new Evaluation("/Users/huanchen/Desktop/lab4/twitter/" + id + ".circles");
+    ClusterTagging cTag = new ClusterTagging("/Users/huanchen/Desktop/lab4/twitter/" + id
+            + ".featnames", "/Users/huanchen/Desktop/lab4/twitter/" + id + ".feat");
     List<List<String>> clusters = sc.kmeans(3);
     eva.evaluate(clusters);
     cTag.tagCluster(clusters);

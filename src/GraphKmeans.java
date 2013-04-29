@@ -24,12 +24,12 @@ public class GraphKmeans extends Clustering {
   }
 
   public static void main(String[] args) throws IOException {
-    String id = "1912";
+    String id = "14840869";
     long a = System.currentTimeMillis();
-    GraphKmeans gk = new GraphKmeans("/Users/huanchen/Desktop/lab4/facebook/" + id + ".edges");
-    Evaluation eva = new Evaluation("/Users/huanchen/Desktop/lab4/facebook/" + id + ".circles");
-    ClusterTagging cTag = new ClusterTagging("/Users/huanchen/Desktop/lab4/facebook/" + id
-            + ".featnames", "/Users/huanchen/Desktop/lab4/facebook/" + id + ".feat");
+    GraphKmeans gk = new GraphKmeans("/Users/huanchen/Desktop/lab4/twitter/" + id + ".edges");
+    Evaluation eva = new Evaluation("/Users/huanchen/Desktop/lab4/twitter/" + id + ".circles");
+    ClusterTagging cTag = new ClusterTagging("/Users/huanchen/Desktop/lab4/twitter/" + id
+            + ".featnames", "/Users/huanchen/Desktop/lab4/twitter/" + id + ".feat");
     List<List<String>> clusters = gk.kmeans(3);
     eva.evaluate(clusters);
     cTag.tagCluster(clusters);
